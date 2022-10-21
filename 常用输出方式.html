@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器中常用输出方式</title>
+</head>
+<body>
+    <script>
+        /* let a = 10;
+        let b = [{
+            id:1,
+            name:"张三"
+        },{
+            id:2,
+            name:"李四"
+        },{
+            id:3,
+            name:"cathy"
+        }]; 
+        //1.console.log/dir/table;在控制台输出
+        // console.log(a);
+        // console.dir(document.body);
+        // console.table(b);
+
+        //alert(b);
+        //confirm("确定要干啥吗？"); */
+
+        var a="abc"+123+456;
+        var b='456'-'123';
+        var c = 100 +true +21.2+null+undefined+"Tencent" +[]+null+9+false;
+        console.log(a,b);
+        console.log(c);
+
+        var str="abc123";
+        var num=parseInt(str);
+        if(num == NaN) {
+            alert(NaN);
+        } else if (num ==123) {
+            alert(123);
+        } else if (typeof num == "number")  {
+            alert("number");
+        } else {
+            alert("str");
+        }
+
+        let x = [1,2,3];
+        let y=x;
+        let z=[4,5,6];
+        y[0]=10;
+        y= z;
+        z[1]=20;
+        x[2]=z=30;
+        console.log(x);
+        console.log(y);
+        console.log(z);
+        
+        for (let i=0;i<10;i++) {
+            continue;
+            console.log(i);
+        }
+        console.log(i);
+    </script>
+</body>
+</html>

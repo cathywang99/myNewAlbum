@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML+CSS测试</title>
+</head>
+
+<body>
+    <div class="form-group">
+        <label id="number-label" form="number">Age
+            <span class="clue">optical</span>
+        </label>
+        <input type="number" name="age" id="number" min="10" max="99" class="form-control" placeholder="Age">
+    </div>
+
+    <nav id="nav-bar">
+        <ul>
+            <li>
+                <a class="nav-link" href="#features">Features</a>
+            </li>
+        </ul>
+        <script>
+            const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies",
+                "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+            function remove(list, bookName) {
+
+                return list.filter(book => book !== bookName);
+            }
+            var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+            console.log(newerBookList);
+        </script>
+</body>
+
+</html>

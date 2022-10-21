@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+ <html>
+
+ <head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+ </head>
+
+ <body>
+    <script>
+      //需求：编写一个方法execAll,执行一次可以把所有的结果捕获到
+       ~ function () {
+          function execAll(str="") {
+            //进来先验证当前正则是否设置了g，不设置则不能进来了，下面的while会有死循环。
+            if(!this.global) return this.exec(str);
+            let res=this.exec(str),ary=[];
+            while(res){
+               //把每一次捕获的内容res[0]存放到数组当中
+               ary.push(res[0]);
+               //只要捕获的内容不为空，则继续捕获下去
+               res=this.exec(str);
+            }
+            return ary;
+          }
+          RegExp.prototype.execAll = execAll;
+       }();
+       let reg = /\d+/g;
+       console.log(reg.execAll("2019zhufeng20202021"));
+       console.log(Boolean("Number(undefined)"));
+       //var name=10;
+       var obj={
+         name:"珠峰培训",
+         [12]:1000,
+         null:234
+       };
+       console.log(obj["name"]);
+    </script>
+ </body>
+
+ </html>

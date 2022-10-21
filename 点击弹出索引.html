@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button value="按钮1">按钮1</button>
+    <button value="按钮2">按钮2</button>
+    <button value="按钮3">按钮3</button>
+    <button value="按钮4">按钮4</button>
+    <button value="按钮5">按钮5</button>
+
+    <script>
+        var btnList = document.getElementsByTagName('button');
+        for(var i=0;i<btnList.length;i++) {
+            btnList[i].myIndex=i;
+            btnList[i].onclick= function() {
+                //alert(i);
+                alert(this.myIndex);
+            }
+        }
+        //循环的目的是每一次重新开始，但是每一次都做一遍
+        //循环给每一个button的onclick，赋值，创建函数之后堆里面存的都是代码字符串（字符串没有意义）
+
+
+        //创建函数
+        function fn(n,m) {
+            var res = null;
+            res=n+m;
+            return res;
+        }
+
+        //执行函数
+        var AA=fn(10,20);
+        console.log(AA);
+    </script>
+</body>
+</html>

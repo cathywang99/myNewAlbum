@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ES6用class创建类</title>
+</head>
+
+<body>
+    <script>
+        class Fn {
+            //等价于的构造函数体
+            constructor(n, m) {
+                this.x = n + m;
+            }
+            //直接写的方法就是加在原型上的 等价于Fn.prototype.getX=function(){}
+            getX() {
+                console.log(this.x);
+            }
+            //前面设置static的：把当前Fn当作普通对象设置的键值对。
+            static queryX() {
+                console.log("私有的属性");
+            }
+            static y = 200;
+            static z = 1000;
+        }
+        Fn.prototype.y = 300;
+        Fn.z = 400;
+
+        let f = new Fn(10, 20);
+        f.getX();
+        Fn.queryX();
+        console.log(Fn.y);
+        console.log(Fn.z);
+        console.log('----------------------------');
+
+        
+    </script>
+</body>
+
+</html>

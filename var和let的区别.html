@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>var和let的区别</title>
+</head>
+<body>
+    <script>
+/*         console.log(a);
+        var a=12;
+        function fn() {
+            console.log(a);
+            var a=13;
+            console.log(a);
+        }
+        fn();
+        console.log(a); */
+
+
+       /*  console.log(a);
+        var a=12;
+        function fn() {
+            console.log(a);
+            a=13;
+        }
+        fn();
+        console.log(a); */
+
+
+        /* let a=12;
+        function fn() {
+            if(!a){
+                let a=15;
+                console.log(a);
+            }
+            console.log(a);
+        }
+        fn();
+        console.log(a); */
+
+
+      /*   var b=10;
+        function fn() {
+            console.log(b);
+            var b=20;
+        }
+        fn();
+        console.log(b); */
+
+
+        /* let n=0;
+        function a(){
+            var  n=10;
+            function b() {
+                n++;
+                console.log(n);
+            }
+            b();
+            return b;
+        }
+        var c=a();
+        c();
+        console.log(n); */
+
+
+        /* var a=9;
+        function fn() {
+            a=0;
+            return function(b) {
+                return b+a++;
+            }
+        }
+        var f=fn();
+        console.log(f(5));
+        console.log(fn()(5));
+        console.log(f(5));
+        console.log(fn()(5));
+        console.log(fn()(5));
+        console.log(fn()(5));
+        console.log(f(6));
+        console.log(fn()(5));
+        console.log(f(7));
+        console.log(f(8));
+        console.log(a); */
+
+        var ary=[1,2,3,4];
+        function fn(ary) {
+            ary[0]=0;
+            ary=[0];
+            ary[0]=100;
+            return ary;
+        }
+        let res=fn(ary);
+        console.log(ary);
+        console.log(res);
+
+    </script>
+</body>
+</html>

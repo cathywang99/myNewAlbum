@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>面向对象</title>
+</head>
+<body>
+    <script>
+    /*     function Fn() {
+            this.x=100;
+            this.y=200;
+            this.getX=function() {
+                console.log(this.x);
+            }
+        }
+        Fn.prototype.getX=function() {
+            console.log(this.x);
+        }
+        Fn.prototype.getY=function() {
+            console.log(this.y);
+        }
+        let f1=new Fn();
+        let f2=new Fn();
+        console.log(f1.constructor);
+        console.log(Fn.prototype.__proto__.constructor);
+        f1.getX();
+        f1.__proto__.getX();
+        f2.getY();
+        Fn.prototype.getY(); */
+
+
+        /* ~function() {
+            //=>x:需要加减的数字
+            function plus(x) {
+                
+            }
+            function minus(x) {
+                    
+            }
+            Number.prototype.plus=plus;
+            Number.prototype.minus=minus;
+        }
+
+        let n=10;
+        let m=n.plus(10).minus(5);
+        console.log(m); */
+
+
+        function Foo(){
+            getName=function() {
+                console.log(1);
+            };
+            return this;
+        }
+        Foo.getName=function(){
+            console.log(2);
+        };
+        Foo.prototype.getName=function() {
+            console.log(3);
+        };
+        function getName() {
+            console.log(5);
+        }
+        var getName=function(){
+            console.log(4);
+        }
+        
+        Foo.getName();//2
+        getName();//4
+        Foo().getName();//1
+        getName();//1
+        new Foo.getName();//2
+        new Foo().getName();//3
+        new new Foo().getName();//3
+
+    </script>
+</body>
+</html>

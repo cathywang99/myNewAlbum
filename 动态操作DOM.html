@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM动态操作</title>
+    <style>
+        .RED{
+            color:red;
+            background-color: lightblue;
+        }
+        .box{
+            width:100px;
+            height:100px;
+            background-color: blue;
+        }
+        .box span{
+            color:red;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="haha">哈哈</div>
+    <div class="box">
+        <span>珠峰培训</span>
+    </div>
+    <script>
+        //动态创建一个DIV元素对象，把它赋给BOX
+        let box=document.createElement('div');
+        box.id='boxActive';
+        box.style.width='200px';
+        box.style.height='200px';
+        box.className='RED';
+
+        let text=document.createTextNode('珠峰培训');
+
+        //添加 容器.appendChild(元素)
+        box.appendChild(text);
+        document.body.appendChild(box);
+
+        //放到指定元素之前 容器.insertBefore([指定元素],[新增元素])
+        let haha=document.getElementById('haha');
+        //haha.parentNode.insertBefore(...)
+        document.body.insertBefore(box,haha);
+
+    </script>
+</body>
+</html>

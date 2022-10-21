@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>闭包练习题</title>
+</head>
+<body>
+    <script>
+        /* var i=20;
+        function fn(){
+            i-=2;
+            return function (n){
+                console.log((++i)-n+'\r');
+            }
+        }
+        var f=fn();
+        f(1);//18
+        f(2);//18
+        fn()(3);//16
+        fn()(4);//14
+        fn()(5);//12
+        f(5);//13
+        f(6);//13
+        fn()(7);//11
+        console.log(i);//18 */
+
+
+
+        /* function fun(n,o){
+            console.log(o+"\n");
+            return {
+                fun:function(m){
+                    return fun(m,n);
+                }
+            };
+        }
+        var c=fun(0).fun(1);
+        c.fun(2);
+        c.fun(3);
+        c.fun(77).fun(888).fun(1999); */
+
+
+
+        ~function(){
+            function call(context){
+                //this:fn也就是当前要操作的这个函数实例
+            }
+            //将自己写的函数扩展到内置类的原型上
+            Function.prototype.call=call;
+        }();
+
+
+        let obj={
+            name:'OBJ'
+        };
+        function fn(){
+            console.log(this);
+        }
+        fn.call(obj,10,20);
+    </script>
+</body>
+</html>

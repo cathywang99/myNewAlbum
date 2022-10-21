@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作</title>
+    <style lang="less" scoped>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .outer {
+            box-sizing: border-box;
+            margin: 20px auto;
+            width: 500px;
+            height: 500px;
+            background: lightcoral;
+            border: 10px solid orangered;
+
+            position:relative;
+        }
+
+        .box {
+            box-sizing: border-box;
+            /*代表新盒子模型，最后写的width/height不再是内容的宽度，而是盒子最后的大小*/
+            margin: 20px auto;
+            padding: 15px;
+            width: 300px;
+            height: 300px;
+            border: 10px solid lightblue;
+            background: lightcyan;
+            font-size: 18px;
+            line-height: 30px;
+            overflow: auto;
+
+
+        }
+
+        /*   .box{
+            
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            
+      基于CSS3变形属性中的位移，在不知道宽高的情况下也能实现效果。（移动一半）  
+            transform:translate(-50%,-50%); 
+      }*/
+
+        /*  .box{
+             position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            margin:auto; }*/
+
+        /*  body{
+        display:flex;
+        设置元素在FLEX容器主轴和交叉轴方向上的对齐方式：CENTER居中对齐。
+        justify-content:center;
+        align-items:center;
+       } */
+    </style>
+</head>
+
+<body>
+    <div id="outer" class="outer">
+        <div id="box" class="box">
+            夫君子之行，静以修身，俭以养德。非淡泊无以明志，非宁静无以致远。夫学须静也，才须学也，非学无以广才，非志无以成学。淫慢则不能励精，险躁则不能治性。年与时驰，意与日去，遂成枯落，多不接世，悲守穷庐，将复何及！
+        </div>
+    </div>
+    <script>
+        let box = document.getElementById("box");
+        console.log(box.clientWidth);
+        console.log(box.clientHeight);
+        let winW = document.documentElement.clientWidth;
+        let winH = document.documentElement.clientHeight;
+
+        console.log(box.offsetParent);
+        console.log(box.offsetLeft);
+        console.log(box.offsetTop);
+        // box.style.position = "absolute";
+        // box.style.left = (winW - 300) / 2 + "px";
+        // box.style.top = (winH - 300) / 2 + "px";
+
+        //offset方法获取当前元素距离BODY的左/上偏移（无论其父级参照物是谁） 
+        //curEle:current element当前要操作的元素
+        //return [object]包含上/左偏移的信息{  top:xxx,left:xxx }
+        function offset(curEle) {
+            let par=curEle.offsetParent,
+            l=curEle.offsetLeft,
+            t=curEle.offsetTop;
+            //存在父参照物，而且还没找到BODY
+            while(par&&par.tagName!=="BODY"){
+                //在元u你有偏移的基础上累加：父参照物的边框、父参照物的偏移
+                l+=par.clientLeft;
+                t+=par.clientTop;
+                l+=par.offsetLeft;
+                t+=par.offsetTop;
+                //继续获取上级参照物
+                par=par.offsetParent; 
+            }
+            return {top:t,left:l};
+        }
+    </script>
+</body>
+
+</html>
