@@ -9,38 +9,38 @@
 
 <body>
     <script>
-        //获取URL地址中问号传参的信息和哈希值，参数是要解析的URL字符串，返回包含参数和哈希值信息的对象（写方法要习惯写注释）
-        function queryURLParams(url) {
-            //1.获取?和#后面的值
-            let askIn = url.indexOf('?'),
-                wellIn = url.indexOf('#'),
-                askText = '',
-                wellText = '';
-            //#不存在（预先对井号位置做判断）
-            wellIn == -1 ? wellIn = url.length : null;
-            //?存在
-            askIn>=0? askText=url.substring(askIn+1,wellIn):null;
-            wellText=url.substring(wellIn+1);
+//获取URL地址中问号传参的信息和哈希值，参数是要解析的URL字符串，返回包含参数和哈希值信息的对象（写方法要习惯写注释）
+function queryURLParams(url) {
+    //1.获取?和#后面的值
+    let askIn = url.indexOf('?'),
+        wellIn = url.indexOf('#'),
+        askText = '',
+        wellText = '';
+    //#不存在（预先对井号位置做判断）
+    wellIn == -1 ? wellIn = url.length : null;
+    //?存在
+    askIn>=0? askText=url.substring(askIn+1,wellIn):null;
+    wellText=url.substring(wellIn+1);
 
-            //2.获取每一部分信息
-            let result={};
-            wellText!==''?result['HASH']=wellText:null;
-            if(askText!=='') {
-                let ary=askText.split('&');
-                ary.forEach(item=>{
-                    let itemAry=item.split('=');
-                    result[itemAry[0]]=itemAry[1];
-                });
-            }
-            return result;
-        }
-        let url = 'http://www.zhufengpeixun.cn/index.html?lx=1&name=zhufeng&teacher=aaa#box';
-        /* 结果：{
-            1x:1,
-            name:'zhufeng',
-            teacher:'aaa',
-            HASH:'box'
-        } */
+    //2.获取每一部分信息
+    let result={};
+    wellText!==''?result['HASH']=wellText:null;
+    if(askText!=='') {
+        let ary=askText.split('&');
+        ary.forEach(item=>{
+            let itemAry=item.split('=');
+            result[itemAry[0]]=itemAry[1];
+        });
+    }
+    return result;
+}
+let url = 'http://www.zhufengpeixun.cn/index.html?lx=1&name=zhufeng&teacher=aaa#box';
+/* 结果：{
+    1x:1,
+    name:'zhufeng',
+    teacher:'aaa',
+    HASH:'box'
+} */
         // //1.获取问号后面的值
         // let askIndex = url.indexOf('?');
         // let wellIndex = url.indexOf('#');

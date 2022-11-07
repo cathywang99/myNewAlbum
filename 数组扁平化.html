@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组扁平化</title>
+</head>
+
+<body>
+    <script>
+        let arr = [
+            [1, 2, 2],
+            [3, 4, 5, 5],
+            [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10
+        ];
+        //flat可以让数组扁平化
+        //基于ES6中的new Set()去重数组
+        arr = Array.from(new Set(arr.flat(Infinity))).sort((a, b) => a - b);
+
+        //把数组直接变成字符串即可 （数组toString之后，不管有多少级，最后都会变为以逗号分隔的字符串）
+        //map将每数组每一项的字符串改成数组
+        arr.toString().split(",").map(item => {
+            return Number(item);
+        });
+
+
+        //JSON.stringify也可以扁平化数组  
+        arr = JSON.stringify(arr).replace(/(\[|\])/g, "").split(",").map(item => Number(item));
+
+        //concat拼接可以展开一层数组，用循环层层展开
+        while (arr.some(item => Array.isArray(item))) {
+            arr = [].concat(...arr);
+        }
+
+        //递归处理
+        ~ function () {
+            function myFlat() {
+                let result = [],
+                    _this = this;
+                //循环arr中的每一项，吧不是数组的存储到新数组中
+                let fn = (arr) => {
+                    for (let i = 0; i < arr.length; i++) {
+                        let item = arr[i];
+                        if (Array.isArray(item)) {
+                            fn(item);
+                            continue;
+                        }
+                        result.push(item);
+                    }
+                };
+                fn(_this);
+                return result;
+            }
+            Array.prototype.myFlat = myFlat;
+        }();
+        arr = arr.myFlat();
+
+        
+
+
+    </script>
+</body>
+
+</html>

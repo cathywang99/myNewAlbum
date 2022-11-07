@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>解决AJAX回调地狱async</title>
+</head>
+
+<body>
+    <script>
+        let promise1 = new Promise(resolve => {
+            setTimeout(() => {
+                resolve(1);
+                console.log(1);
+            }, 1000);
+        });
+        promise1.then(res => {
+            //console.log(res);
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(2);
+                }, 1000);
+            });
+        }).then(res => {
+            console.log(res);
+        });
+        //ES7中新增的“语法糖” async await成对出现
+        //函数中只要使用await,则当前函数必须使用async修饰
+        async function func() {
+            let res;
+            res = await new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(3);
+                }, 1000);
+            });
+            console.log(res);
+
+            res = await new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(4);
+                }, 1000);
+            });
+            console.log(res);
+        }
+        func();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+
+<body>
+    <script>
+        /* let timer=null;
+        timer=setTimeout(()=>{
+            clearTimeout(timer);
+            timer=null;
+        },1000); */
+let n = 0;
+setTimeout(() => {
+    n++;
+    console.log(n);
+}, 500);
+setTimeout(() => {
+    n+=2;
+    console.log(n);
+},50);
+for(let i = 0; i < 90000000; i++) {}
+setTimeout(() => {
+    n+=3;
+    console.log(n);
+}, 20);
+console.log(n);
+    </script>
+</body>
+
+</html>

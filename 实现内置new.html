@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>内置new</title>
+</head>
+<body>
+    <script>
+        //=>Fn当前要new的类 
+        //=>arg后期需要给构造函数传递的参数信息
+        function _new(Fn,...arg){
+            //创建一个空对象，让他的原型链指向Fn.prototype(作为Fn的一个实例)
+            // let obj={};
+            // obj.__proto__=Fn.prototype;
+            let obj=Obejct.create(Fn.prototype);
+            Fn.call(obj,...arg);
+            return obj;
+        }
+        let sanmao=_new(Dog,"三毛");
+    </script>
+</body>
+</html>

@@ -1,36 +1,82 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>HTML+CSS测试</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        #tabBox{
+            box-sizing:border-box;
+            margin:20px auto;
+            width:500px;
+        }
+        #navBox{
+            display:flex;
+            position:relative;
+            top:1.5px;
+        }
+        #navBox li{
+            box-sizing:border-box;
+            margin-right:10px;
+            padding:0 10px;
+            line-height:35px;
+            border:2px solid blue;
+        }
+        #navBox li.active{
+            border-bottom-color:rgb(100,10,134);
+        }
+        #tabBox>div{
+            display:none;
+            box-sizing:border-box;
+            padding:10px;
+            height:200px;
+            border:2px solid blue;
+        }
+        #tabBox>div.active{
+            display:block;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="form-group">
-        <label id="number-label" form="number">Age
-            <span class="clue">optical</span>
-        </label>
-        <input type="number" name="age" id="number" min="10" max="99" class="form-control" placeholder="Age">
-    </div>
-
-    <nav id="nav-bar">
-        <ul>
-            <li>
-                <a class="nav-link" href="#features">Features</a>
-            </li>
+    <div id="tabBox">
+        <ul id="navBox">
+            <li class="active">编程</li>
+            <li>读书</li>
+            <li>运动</li>
         </ul>
-        <script>
-            const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies",
-                "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+        <div class="active">编程使我快乐</div>
+        <div>读书使我幸福</div>
+        <div>运动使我健康</div>
+    </div>
+    </div>
+    <script>
+       /*  var tabBox=document.getElementById("tabBox");
+        var navList=document.getElementsByTagName("li");
+        var divList=tabBox.getElementsByTagName("div");
+        console.log(tabBox,navList,divList);
 
-            function remove(list, bookName) {
-
-                return list.filter(book => book !== bookName);
+        var changeTab=function(n){
+            for(var i=0;i<navList.length;i++){
+                navList[i].className="";
+                divList[i].className="";
             }
-            var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
-            console.log(newerBookList);
-        </script>
-</body>
+            navList[n].className="active";
+            divList[n].className="active";
+        };
 
+        for(let i=0;i<navList.length;i++){
+            navList[i].onclick=function(){
+                changeTab(i);
+            }
+        } */
+
+    </script>
+</body>
 </html>

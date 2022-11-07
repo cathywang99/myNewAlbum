@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* new pormise([executor]):第一个执行函数必须传递
+        [executor]
+        1.new promise的时候就会把executor执行,创建promise的一个实例(exe是promise类的一个回调函数，promise内部会把它执行)
+        2.promise不仅把exe执行，而且还给exe传递两个参数。（两个参数也是函数类型）
+        resolve函数执行，代表promise处理的异步事件是成功的。 */
+        let promiseExamp = new Promise((resolve, reject) => {
+            //这里一般存放的是我们即将要处理的异步任务，任务成功执行resolve，任务失败执行reject。
+            setTimeout(() => {
+                let ran = Math.random();
+                ran < 0.5 ? reject(ran) : resolve(ran);
+            }, 1000);
+        });
+        //原型上的方法then
+        promiseExamp.then(result => {
+            //状态为fulfilled成功后执行(result：[[PromiseValue]])
+            console.log("成功" + result);
+        });
+        promiseExamp.catch(error => {
+            console.log("失败" + error);
+        });
+        promiseExamp.finally(x => {
+            console.log("哈哈");
+        });
+
+
+
+        new Promise((resolve, reject) => {
+            //resolve(100);
+            reject(-100);
+        }).then(result => {
+            console.log(result);
+            return result * 10;
+        }, err => {
+            console.log(err);
+            return err / 10;
+        }).then(A => {
+            console.log("A" + A);
+        }, B => {
+            console.log('B' + B);
+        });
+
+        new Promise((resolve, reject) => {
+            //resolve(100);
+            reject(-100);
+        }).then(A => {
+            console.log(A);
+            return A * 10;
+        }).catch(B => {
+            console.log("B" + B);
+        });
+
+
+        new Promise((resolve, reject) => {
+            resolve(100);
+            //reject(-100);
+        }).then(A => {
+            console.log(AAAAA);
+            return A * 10;
+        }).catch(B => {
+            console.log("B" + B);
+            return '@';
+        }).then(C => {
+            console.log(C);
+        });
+
+        new Promise((resolve, reject) => {
+            resolve();
+        }).then().catch(x => {
+            console.log(1);
+        }).then(x => {
+            console.log(2); //=>输出
+        }).then(x => {
+            console.log(3); //=>输出
+        }).catch(x => {
+            console.log(4); //=>输出
+        }).then(x => {
+            console.log("AAA"); //=>输出
+            console.log(AAAA); //=>报错
+        }).catch().then(null, x => {
+            console.log(5); //=>输出
+        });
+    </script>
+</body>
+
+</html>

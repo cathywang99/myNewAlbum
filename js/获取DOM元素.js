@@ -21,28 +21,29 @@
 // let navList=tab.getElementsByTagName('li');
 
 //用后代选择器 选择tab下面的li
-let navList=document.querySelectorAll('.tab li');
+let navList = document.querySelectorAll('.tab li');
 console.log(navList);
-let divList=tabBox.querySelectorAll('.tabBox>div');  //>表示子元素
+let divList = tabBox.querySelectorAll('.tabBox>div');  //>表示子元素
 console.log(divList);
 
 
 //一般用于表单元素的name
 // var sexList=document.getElementsByName('sex');
 // var submit=document.getElementById('submit');
-var sexList=document.querySelectorAll('[name=sex]');
-var submit=document.querySelector('#submit');
+var sexList = document.querySelectorAll('[name=sex]');
+var submit = document.querySelector('#submit');
 console.log(sexList);
 console.log(submit);
-submit.onclick=function() {
-    var res=null;
-    for(var i=0;i<sexList.length;i++) {
-        var item=sexList[i];
-        if(item.checked){
+submit.onclick = function () {
+    var res = null;
+    for (var i = 0; i < sexList.length; i++) {
+        var item = sexList[i];
+        if (item.checked) {
             //被选中
-            res=item.value;
+            res = item.value;
             break;
         }
     }
     alert(res);
 }
+

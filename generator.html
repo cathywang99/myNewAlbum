@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function *func(){
+    console.log(1);
+    yield "A";
+    console.log(2);
+    yield "B";
+    console.log(3);
+    yield "C";
+}
+let gt=func();//创建一个生成器对象，但是方法中的代码还没有执行，基于gt.next()执行函数
+console.log(gt.next());//再执行的时候遇到一次yield就会暂停一次，返回的对象中value存储的是yield的结果，done存储的是是否把代码都执行完。
+console.log(gt.next());
+console.log(gt.next());
+console.log(gt.next());
+    </script>
+</body>
+</html>

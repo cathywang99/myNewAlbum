@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>减少DOM回流读写分离</title>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <script>
+// 现代的浏览器都有渲染队列机制：发现某一行元素要修改样式，不立即渲染，而是看看下一行，如果下一行也是改变样式，则把修改样式的操作放到“渲染队列”中。
+//offsetTop/offsetLeft/offsetWidth/offsetHeight/clientTop/scrollLeft...会刷新渲染队列
+// box.style.width="100px";
+// box.style.height='100px';
+// box.style.background='red';
+// box.style.margin='20px auto';
+box.style.width="100px";
+box.style.height='100px';
+box.style.background='red';
+box.style.margin='20px auto';
+console.log(box.offsetWidth);
+console.log(box.offsetHeight);
+    </script>
+</body>
+
+</html>

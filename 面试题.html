@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>面试题讲解</title>
+</head>
+
+<body>
+    <script>
+        //每一个方法执行完，都要返回NUMBER这个类的一个实例，这样才可以继续调取NUMBER方法
+        ~ function () {
+            function check() {
+                n = Number(n);
+                return isNaN(n) ? 0 : n;
+            }
+
+            function add(n) {
+                return this + n;
+            }
+
+            function minus(n) {
+                return this - n;
+            }
+            Number.prototype.add = add;
+            Number.prototype.minus = minus;
+        }();
+        console.log((5).add(3).minus(2)); //6
+
+        /* function myIndexOf(T) {
+            let lenT = T.length,
+                lenS = this.length;
+            let res = -1;
+            if(lenT>lenS) return res;
+            for (let i = 0; i <= lenS - lenT; i++) {
+                let char = this[i];
+                if (this.substr(i, lenT) === T) {
+                    res = i;
+                    break;
+                }
+
+            }
+            return res;
+        } */
+
+        function myIndexOf(T) {
+            let reg = new RegExp(T),
+                res = reg.exec(this);
+            return res === null ? -1 : res.index;
+        }
+        String.prototype.myIndexOf = myIndexOf;
+        let S = "zhufengpeixun";
+        let T = "pei";
+        console.log(S.myIndexOf(T));
+
+        let str = "http://www.zhufengpeixun.cn/index.html?lx=1&from=wx#video";
+        let reg = /^(?:(http|https|ftp):\/\/)?((?:[\w-]+\.)+[a-z0-9]+)((?:\/[^/?#]*)+)?(\?[^#]+)?(#.+)?$/i;
+        console.log(reg.exec(str));
+
+
+
+
+        function F() {}
+        Object.prototype.a = function () {
+            console.log('a()')
+        }
+        Function.prototype.b = function () {
+            console.log('b()')
+        }
+        let f=new F();
+        f.a() //a()
+        //f.b() //f.b is not a function -->找不到
+        F.a() //a()
+        F.b() //b()
+        console.log(f)
+        console.log(Object.prototype)
+        console.log(Function.prototype)
+
+    </script>
+</body>
+
+</html>
